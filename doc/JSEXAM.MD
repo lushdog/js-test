@@ -79,4 +79,11 @@ const query = '?' + Object.keys(params)
   ).join('&')
 ```
 
-11.
+11.一个简单的模板字符串替换
+
+```javascript
+String.prototype.render = function (context) {
+  return this.replace(/{{(.*?)}}/g, (match, key) => context[key.trim()])
+}
+```
+
