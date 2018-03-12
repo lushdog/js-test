@@ -87,3 +87,10 @@ String.prototype.render = function (context) {
 }
 ```
 
+12.字符串a是否包含b
+
+```javascript
+~a.indexOf(b)
+a.includes(b)
+```
+
