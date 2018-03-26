@@ -94,3 +94,60 @@ String.prototype.render = function (context) {
 a.includes(b)
 ```
 
+13.对象深拷贝
+
+```javascript
+function deepCopy(obj){
+	let newObj = obj.constructor === Array ? []: {}   //判断是深拷贝对象还是数组
+    
+    for(let i in obj){
+        if(typeof obj[i] === 'object') {
+            newObj[i] = deepCopy(obj[i])    //  如果要拷贝的对象的属性依然是个复合类型，递归
+        } else {
+            newObj[i] = obj[i]
+        }
+    }
+    
+    return newObj
+}
+
+```
+
+14 .闭包的例子
+
+```javascript
+for (var i = 0; i < 10; i ++) {
+    setTimeout(
+        (function() {
+        	console.log(i)
+    	})()
+    )
+}
+```
+
+15.什么是严格模式，有什么区别。
+
+```javascript
+1. 消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;
+2. 消除代码运行的一些不安全之处，保证代码运行的安全；
+3. 提高编译器效率，增加运行速度；
+4. 为未来新版本的Javascript做好铺垫。
+
+a. 全局变量显式声明
+b. 静态绑定: 不能使用with, 创设eval作用域
+c. 增强的安全措施: 禁止this关键字指向全局对象, 禁止在函数内部遍历调用栈
+d. 禁止删除变量, 只有configurable设置为true的对象属性，才能被删除
+e. 显式报错
+f. 重名错误
+g. 禁止八进制表示法
+h. arguments对象的限制: 不允许对arguments赋值,不再追踪参数的变化,禁止使用arguments.callee
+i. 函数必须声明在顶层
+j. 保留字 implements, interface, let, package, private, protected, public, static, yield
+```
+
+16. 实现 `add(2)(5) // 7` 函数
+
+```javascript
+const add = (a) => (b) => a + b
+```
+17.
